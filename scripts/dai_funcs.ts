@@ -9,7 +9,10 @@ async function main() {
 
     const Greeter = await ethers.getContract<Greeter>('Greeter');
     console.log(`Greeter.greet(): ${await Greeter.greet()}`);
-    
+
+    await Greeter.setGreeting('A New Greeting');
+    console.log(`Greeter.greet(): ${await Greeter.greet()}`);
+
 }
 
 
