@@ -1,4 +1,5 @@
 import {DeployFunction} from 'hardhat-deploy/types';
+import {daiAddress_Kovan} from "../helpers/constants";
 
 
 const func: DeployFunction = async function ({deployments, getNamedAccounts, network, getChainId}) {
@@ -7,11 +8,13 @@ const func: DeployFunction = async function ({deployments, getNamedAccounts, net
 
     console.log('chainId:', await getChainId());
 
-    await deploy('Greeter', {
-        from: owner,
-        args: ['new greeting'],
-        log: true,
-    });
+    if (network.name == 'kovan') {
+        await deploy('MyDefiProject', {
+            from: owner,
+            args: [daiAddress_Kovan],
+            log: true,
+        })
+    }
 
 };
 export default func;
