@@ -8,20 +8,14 @@ const {execute, read} = deployments;
 async function main() {
 
     const {owner} = await getNamedAccounts();
+    //S1: transfer Dai to another address using MyDefiProject
     if (await network.name === 'kovan') {
         const Dai = await ethers.getContractAt('IERC20',daiAddress_Kovan);
         const MyDefiProject = await ethers.getContract('MyDefiProject');
 
-        // await Dai.approve(MyDefiProject.address,parseEther(initialApprove));
+        // await Dai.approve(MyDefiProject.address,parseEther(initialApprove)); //step 1
         await MyDefiProject.foo(ethers.constants.AddressZero,parseEther(fooAmount));
     };
-
-    // const Greeter = await ethers.getContract<Greeter>('Greeter');
-    // console.log(`Greeter.greet(): ${await Greeter.greet()}`);
-    //
-    // await Greeter.setGreeting('A New Greeting');
-    // console.log(`Greeter.greet(): ${await Greeter.greet()}`);
-
 }
 
 
