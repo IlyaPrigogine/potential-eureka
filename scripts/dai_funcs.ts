@@ -22,18 +22,18 @@ async function main() {
     //     const BAT = await ethers.getContractAt('IERC20', bat_kovan);
     //     const MyDefiProject = await ethers.getContract<MyDefiProject>('MyDefiProject');
     //
-    //     // await MyDefiProject.setTokenAddress(BAT.address);
-    //     // await BAT.approve(MyDefiProject.address, parseEther(initialApprove)); //step 1
+    //     await MyDefiProject.setTokenAddress(BAT.address);
+    //     await BAT.approve(MyDefiProject.address, parseEther(initialApprove)); //step 1
     //     await MyDefiProject.foo(ethers.constants.AddressZero, parseEther(fooAmount));
     // }
 
-    //s3: for cusdc
+    // s3: for cusdc
     if (await network.name === 'kovan') {
         const Comp = await ethers.getContractAt('IERC20', comp_kovan);
         const MyDefiProject = await ethers.getContract<MyDefiProject>('MyDefiProject');
 
-        // await MyDefiProject.setTokenAddress(Comp.address);
-        // await Comp.approve(MyDefiProject.address, parseEther(initialApprove)); //step 1
+        await MyDefiProject.setTokenAddress(Comp.address);
+        await Comp.approve(MyDefiProject.address, parseEther(initialApprove)); //step 1
         await MyDefiProject.foo(ethers.constants.AddressZero, parseEther(fooAmount));
     }
 }

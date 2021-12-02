@@ -1,5 +1,5 @@
 import {DeployFunction} from 'hardhat-deploy/types';
-import {dai_Kovan} from "../helpers/constants";
+import {comp_kovan, dai_Kovan} from "../helpers/constants";
 
 
 const func: DeployFunction = async function ({deployments, getNamedAccounts, network, getChainId}) {
@@ -11,7 +11,7 @@ const func: DeployFunction = async function ({deployments, getNamedAccounts, net
     if (network.name == 'kovan') {
         await deploy('MyDefiProject', {
             from: owner,
-            args: [dai_Kovan],
+            args: [comp_kovan],
             log: true,
         })
     }
